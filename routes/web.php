@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Models\Categoria;
+use App\Http\Controllers\PerfilController;
 
 Route::get('/', function () {
    $categorias = Categoria::all();
@@ -17,3 +18,6 @@ Route::put('/producto/{id}', [ProductoController::class, 'update'])->name('produ
 
 Route::resource('categorias', CategoriaController::class);
 Route::get('/categorias/{id}/productos',[CategoriaController::class, 'verProductos'])->name('categorias.producto');
+
+
+Route::resource('perfiles', PerfilController::class);

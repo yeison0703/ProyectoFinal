@@ -20,6 +20,7 @@
                     <li class="nav-item"><a class="nav-link {{ request()->is('icicio*') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->is('productos*') ? 'active' : '' }}" href="{{ route('productos.index') }}">Productos</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->is('categorias*') ? 'active' : '' }}" href="{{ route('categorias.index') }}">Categorías</a></li>
+                    <li class="nav-item"><a class="nav-link {{ request()->is('login*') ? 'active' : '' }}" href="{{ route('perfiles.index') }}">Login</a></li>
                 </ul>
                
             </div>
