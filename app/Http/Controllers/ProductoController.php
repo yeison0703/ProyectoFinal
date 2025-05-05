@@ -52,7 +52,9 @@ class ProductoController extends Controller
 
     public function show(string $id)
     {
-        //
+        $producto = Producto::with('categoria')->findOrFail($id); // Obtener el producto con la relación de categoría
+        return view('productos.show', compact('producto'));
+ //
     }
 
 

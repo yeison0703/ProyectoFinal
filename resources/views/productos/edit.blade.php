@@ -50,7 +50,7 @@
 
         <div class="form-group mb-2">
             <label>URL de la Imagen</label>
-            <input type="text" name="imagen" class="form-control" value="{{ $producto->imagen }}" required>
+            <input type="url" name="imagen" class="form-control" value="{{ $producto->imagen }}" required>
         </div>
 
         <button type="submit" class="btn btn-outline-dark">Actualizar</button>

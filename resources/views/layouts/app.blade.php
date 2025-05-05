@@ -20,7 +20,18 @@
                     <li class="nav-item"><a class="nav-link {{ request()->is('icicio*') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->is('productos*') ? 'active' : '' }}" href="{{ route('productos.index') }}">Productos</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->is('categorias*') ? 'active' : '' }}" href="{{ route('categorias.index') }}">Categorías</a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->is('login*') ? 'active' : '' }}" href="{{ route('perfiles.index') }}">Login</a></li>
+            
+
+                    @guest
+                       <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Iniciar Sesion</a></li>
+                    @endguest
+
+                    @auth
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Cerrar Sesion</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endauth
                 </ul>
                
             </div>
