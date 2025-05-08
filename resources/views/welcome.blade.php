@@ -9,7 +9,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+      .hero {
+        background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/8e/d4/58/el-amor-es-nuestro-ingrediente.jpg?w=800&h=-1&s=1');
+        background-size: cover;
+        background-position: center;
+        height: 70vh;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      }
+      .hero h2{
+          font-size: 2rem;
+          font-weight: 300;
+          text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      }
+      .section-title {
+        font-size: 2.5rem;
+        margin-top: 40px;
+      }
+      .carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000;
+     border-radius: 20%; 
+}
+footer {
 
+  
+  background: linear-gradient(90deg,rgb(15, 46, 27),rgb(20, 65, 38),rgb(18, 56, 32));
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+footer .footer-section {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+footer .footer-section h3 {
+    margin-bottom: 10px;
+}
+
+footer .footer-section a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+}
+
+footer .footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+
+.content{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.about{
+    height: 100vh;
+    background-color:#eefaf39c;
+ }
+ .p1{
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    -webkit-text-stroke: .30px rgb(0, 0, 0);
+    justify-content: center;
+    margin-left: 60px;
+    margin-right: 60px
+    
+}
+.title2{
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: rgb(9, 61, 9);
+    -webkit-text-stroke: 1px black;
+    text-align: center;
+}
+
+
+.mapa{
+    min-width: 700px;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+ }
+ 
+ .mapa1{
+    height: 50vh;
+    width: 200vh;
+    border-radius: 5px;
+ }
+
+    </style>
 </head>
 <body>
     <div class="container mt-4">
@@ -21,7 +134,7 @@
                 $imagenes = [
                     'Postres'=>'https://0701.static.prezi.com/preview/v2/otksijunl3nhsozxhpzd4w3jnx6jc3sachvcdoaizecfr3dnitcq_3_0.png',
                     'Conservas'=>'https://img.restaurantguru.com/r21a-Dulce-Contigo-meals-2023-04.jpg',
-                    'Dulces'=>'https://www.noticiasneo.com/sites/default/files/2023-01/bebidasNAok.png',
+                    'Dulces'=>'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDfmKcylAaAaebemGiW48x945lQMRMHK6oGw&s',
                     //agregar nombre y url para mas categorias
         ];
             @endphp
@@ -31,7 +144,7 @@
                     <div class="d-flex justify-content-center align-items-center flex-column" style="height: 500px;">
 
                         <img src="{{ $imagenes[$categoria->nombre] ?? 'https://via.placeholder.com' }}" class="d-block w-100" alt="{{ $categoria->nombre }}"
-                        style="height: 400px;  border-radius: 5%;">
+                        style="height: 400px;">
 
                         <h5 class="mt-3">{{ $categoria->descripcion }}</h5>
 
@@ -60,35 +173,8 @@
 
 </div>
 <div class="container ">
-<style>
-    .hero {
-      background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/8e/d4/58/el-amor-es-nuestro-ingrediente.jpg?w=800&h=-1&s=1');
-      background-size: cover;
-      background-position: center;
-      height: 70vh;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: bold;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-    }
-    .hero h2{
-        font-size: 2rem;
-        font-weight: 300;
-        text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-    }
-    .section-title {
-      font-size: 2.5rem;
-      margin-top: 40px;
-    }
-  </style>
-</head>
-<body>
+
+
 <!-- Galería de Productos -->
 <section class="bg-light py-5">
   <div class="container">
@@ -205,95 +291,7 @@
   AOS.init();
 </script>
 
-      <style>
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: #000;
-     border-radius: 20%; 
-}
-footer {
-
-  
-    background-color: #0f532b;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-footer .footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-footer .footer-section {
-    width: 30%;
-    margin-bottom: 20px;
-}
-
-footer .footer-section h3 {
-    margin-bottom: 10px;
-}
-
-footer .footer-section a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 5px;
-}
-
-footer .footer-bottom {
-    margin-top: 20px;
-    border-top: 1px solid #444;
-    padding-top: 10px;
-}
-
-.content{
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-.about{
-    height: 100vh;
-    background-color:#eefaf39c;
- }
- .p1{
-    margin-bottom: 10px;
-    font-size: 30px;
-    color: rgb(0, 0, 0);
-    -webkit-text-stroke: .30px rgb(0, 0, 0);
-    justify-content: center;
-    margin-left: 60px;
-    margin-right: 60px
-    
-}
-.title2{
-    font-size: 40px;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: rgb(9, 61, 9);
-    -webkit-text-stroke: 1px black;
-    text-align: center;
-}
-
-
-.mapa{
-    min-width: 700px;
-    display: flex;
-    justify-content: center;
-    padding: 50px;
- }
- 
- .mapa1{
-    height: 50vh;
-    width: 200vh;
-    border-radius: 5px;
- }
-
-  </style>
+      
 </body>
 </html>
 

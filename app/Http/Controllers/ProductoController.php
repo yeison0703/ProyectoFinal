@@ -8,7 +8,10 @@ use App\Models\Categoria;
 
 class ProductoController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     public function index()
     {
         $productos = Producto::with('categoria')->get(); // Obtener todos los productos con la relación de categoría
@@ -33,8 +36,13 @@ class ProductoController extends Controller
         'precio' => 'required|numeric',
         'stock' => 'required|integer',
         'categoria_id' => 'required|exists:categorias,id',
-        'imagen' => 'nullable|url',
+        'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validar la imagen
     ]);
+
+    $rutaImagen = null;
+        if ($request->hasFile('imagen')) {
+            $rutaImagen = $request->file('imagen')->store('productos', 'public');
+        }
 
     // Crear el producto
     Producto::create([
@@ -43,7 +51,7 @@ class ProductoController extends Controller
         'precio' => $request->precio,
         'stock' => $request->stock,
         'categoria_id' => $request->categoria_id,
-        'imagen' => $request->imagen,
+        'imagen' => $rutaImagen,
     ]);
 
     // Redirigir al listado
@@ -94,4 +102,5 @@ class ProductoController extends Controller
         // Redirigir al listado con mensaje
         return redirect()->route('productos.index')->with('success', 'Producto eliminado exitosamente.');
     }
+   
 }

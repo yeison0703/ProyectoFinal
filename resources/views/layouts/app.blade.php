@@ -7,36 +7,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-success bg-success">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="https://media-cdn.tripadvisor.com/media/photo-s/19/a2/1c/a6/dulcecontigo.jpg" alt="">
-            </a>
-            <a class="navbar-brand" href="{{ url('/') }}">Dulce Contigo</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link {{ request()->is('icicio*') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->is('productos*') ? 'active' : '' }}" href="{{ route('productos.index') }}">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->is('categorias*') ? 'active' : '' }}" href="{{ route('categorias.index') }}">Categorías</a></li>
-            
-
-                    @guest
-                       <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Iniciar Sesion</a></li>
-                    @endguest
-
-                    @auth
-                        <li class="nav-item"><a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Cerrar Sesion</a></li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    @endauth
-                </ul>
-               
-            </div>
-        </div>
-    </nav>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <style>
          .logo{
              margin-left: 30px;
@@ -72,8 +43,40 @@
             color:rgb(255, 255, 255);
             text-shadow: rgb(255, 38, 0); /* Sombra en el texto */
         }            
-                 
-        </style>
+        </style>         
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-success bg-success">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/19/a2/1c/a6/dulcecontigo.jpg" alt="">
+            </a>
+            <a class="navbar-brand" href="{{ url('/') }}">Dulce Contigo</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link {{ request()->is('icicio*') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a></li>
+                   @auth
+                       
+                    <li class="nav-item"><a class="nav-link {{ request()->is('productos*') ? 'active' : '' }}" href="{{ route('productos.index') }}">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link {{ request()->is('categorias*') ? 'active' : '' }}" href="{{ route('categorias.index') }}">Categorías</a></li>
+                    @endauth
+
+                    @guest
+                       <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Iniciar Sesion</a></li>
+                    @endguest
+
+                    @auth
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Cerrar Sesion</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endauth
+                </ul>
+               
+            </div>
+        </div>
+    </nav>
+    
     <div class="container mt-4">
         @yield('content')
     </div>

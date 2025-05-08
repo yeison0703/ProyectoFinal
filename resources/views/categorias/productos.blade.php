@@ -9,10 +9,10 @@
 
         @foreach ($productos as $producto)
         <div style="border: 1px solid #ccc; padding: 15px; width: 200px; text-align: center;">
-            <img src="{{ $producto->imagen }}" alt="imagen del producto" width="100">
+            <img src="{{ $producto->imagen }}" alt="imagen del producto" width="100" height="100">
             <h5>{{ $producto->nombre }}</h5>
             <p>${{ $producto->precio }}</p>
-            <a href="{{route('producto.show',$producto->id)}}" class="btn btn-secundary">ver</a>
+            <a href="{{route('producto.show',$producto->id)}}" class="btn btn-secondary">ver</a>
         </div>
         @endforeach
     </div>
@@ -47,7 +47,7 @@
     footer {
 
   
-background-color: #0f532b;
+        background: linear-gradient(90deg,rgb(15, 46, 27),rgb(20, 65, 38),rgb(18, 56, 32));
 color: #fff;
 padding: 20px;
 text-align: center;

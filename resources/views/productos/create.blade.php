@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ route('productos.store') }}" method="POST">
+    <form action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -39,17 +39,19 @@
 
         <div class="mb-3">
             <label for="categoria_id" class="form-label">Categoría:</label>
-            <select name="categoria_id" id="categoria_id" required>
-            <option value="">Seleccione una categoria</option>
-            @foreach($categorias as $categoria)
-                <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
-            @endforeach
-        </select>
+            <select class="form-select" name="categoria_id" id="categoria_id" required>
+                <option value="">Seleccione una categoría</option>
+                @foreach($categorias as $categoria)
+                    <option value="{{ $categoria->id }}" {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
+                        {{ $categoria->nombre }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <div class="mb-3">
-            <label for="imagen" class="form-label">URL de la imagen:</label>
-            <input type="url" name="imagen" id="imagen" class="form-control" value="{{ old('imagen') }}">
+            <label for="imagen" class="form-label">Imagen:</label>
+            <input type="file" name="imagen" id="imagen" class="form-control" value="{{ old('imagen') }}" accept="image/*">
         </div>
 
         <button type="submit" class="btn btn-outline-dark">Guardar</button>
